@@ -66,3 +66,7 @@ def deploy_mocks(decimals=DECIMALS, initial_value=STARTING_PRICE):
   link_token = LinkToken.deploy({"from": account})
   VRFCoordinatorMock.deploy(link_token, {"from": account})
   print("Deployed!")
+
+
+def fund_with_link():
+  
