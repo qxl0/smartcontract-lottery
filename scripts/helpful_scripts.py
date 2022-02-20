@@ -62,5 +62,7 @@ STARTING_PRICE = 200000000000
 
 def deploy_mocks(decimals=DECIMALS, initial_value=STARTING_PRICE):
   account = get_account()
-  mock_price_feed = MockV3Aggregatork.deploy(decimals, initial_value, {"from": account})
+  MockV3Aggregator.deploy(decimals, initial_value, {"from": account})
+  link_token = LinkToken.deploy({"from": account})
+  VRFCoordinatorMock.deploy(link_token, {"from": account})
   print("Deployed!")
