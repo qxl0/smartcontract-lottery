@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 
 contract Lottery is VRFConsumerBase, Ownable {
     address payable[] public players;
-    address public recentWinner;
+    address payable public recentWinner;
     uint256 public randomness;
     uint256 public usdEntryFee;
     AggregatorV3Interface internal ethUsdPriceFeed;
@@ -71,7 +71,6 @@ contract Lottery is VRFConsumerBase, Ownable {
         // ) % players.length;
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         bytes32 requestId = requestRandomness(keyhash, fee);
-        print("RequestId is:", requestId);
     }
 
     function fulfillRandomness(bytes32 _requestId, uint256 _randomness)
